@@ -1,0 +1,28 @@
+$namespace: "y-";
+
+@mixin blockquote($block) {
+  // !global设置为全局变量
+  $blockname: $namespace + $block !global;
+
+  // 获取变量
+  .#{$blockname} {
+    @content;
+  }
+
+  // .y-buttton {
+  // @content就是此处代码
+  // }
+}
+
+// 循环不同类名给不同颜色
+@mixin status($list) {
+
+  @each $key,
+  $value in $list {
+
+    // y-button-primary
+    &.#{$blockname}-#{$key} {
+      background: $value;
+    }
+  }
+}

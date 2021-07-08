@@ -1,0 +1,36 @@
+$primary: #409EFF;
+$success: #67C23A;
+$warning: #E6A23C;
+$danger: #F56C6C;
+$info: #909399;
+
+$primary-active: #0c81f6;
+$success-active: #57b827;
+$warning-active: #d6912a;
+$danger-active: #ce4040;
+$info-active: #656769;
+$font-size: 12px;
+$border-radius: 4px;
+$color: #ffffff;
+
+body,
+html {
+  line-height: 1px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+}
+
+.clearfix {
+  display: inline-block;
+
+  &:after {
+    content: '';
+    display: block;
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}

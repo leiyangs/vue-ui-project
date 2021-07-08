@@ -1,0 +1,43 @@
+@import "./common/_base.scss";
+@import "./mixins/mixins.scss";
+
+$color-list: (primary: $primary, success: $success, warning: $warning, danger: $danger, info: $info,
+);
+$active-color-list: (primary: $primary-active,
+  success: $success-active,
+  warning: $warning-active,
+  danger: $danger-active,
+  info: $info-active,
+);
+
+@include blockquote(button) {
+  @include status($color-list);
+  font-size: $font-size;
+  border-radius: $border-radius;
+  color: $color;
+  cursor: pointer;
+  outline: none;
+  background: #FFFFFF;
+  border: 1px solid #DCDFE6;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  align-items: center;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: #ccc;
+  vertical-align: middle;
+
+  &:active {
+    @include status($active-color-list);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+.y-button+.y-button {
+  margin-left: 2px;
+}
