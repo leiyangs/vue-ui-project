@@ -64,8 +64,9 @@ $focus-color-list: (primary: $primary-focus,
   }
 
   &:disabled {
+    background-color: #ffffff;
     @include status($disable-color-list);
-    pointer-events: none;
+    // pointer-events: none;
     cursor: not-allowed;
   }
 
