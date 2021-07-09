@@ -54,12 +54,12 @@ $focus-color-list: (primary: $primary-focus,
 
   &:focus,
   &:hover {
-    background-color: #66b1ff;
+    background-color: #b3d8ff;
     @include status($focus-color-list);
   }
 
   &:active {
-    background-color: #b3d8ff;
+    background-color: #66b1ff;
     @include status($active-color-list);
   }
 
