@@ -1,7 +1,7 @@
 <template>
   <button :class="classes" :disabled="loading">
     <y-icon v-if="icon && !loading" :icon="icon"/>
-    <y-icon v-if="loading" icon="loading"/>
+    <y-icon v-if="loading" class="loading" icon="loading"/>
     <slot></slot>
   </button>
 </template>

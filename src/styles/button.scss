@@ -9,6 +9,12 @@ $active-color-list: (primary: $primary-active,
   danger: $danger-active,
   info: $info-active,
 );
+$disable-color-list: (primary: $primary-disable,
+  success: $success-disable,
+  warning: $warning-disable,
+  danger: $danger-disable,
+  info: $info-disable,
+);
 
 @include blockquote(button) {
   @include status($color-list);
@@ -33,8 +39,23 @@ $active-color-list: (primary: $primary-active,
   }
 
   &:disabled {
+    @include status($disable-color-list);
     pointer-events: none;
     cursor: not-allowed;
+  }
+
+  @keyframes rotate360 {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading {
+    animation: rotate360 1s linear infinite;
   }
 }
 
