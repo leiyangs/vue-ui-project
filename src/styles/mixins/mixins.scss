@@ -23,6 +23,7 @@ $namespace: "y-";
     // y-button-primary
     &.#{$blockname}-#{$key} {
       background: $value;
+      color: $color;
     }
   }
 }

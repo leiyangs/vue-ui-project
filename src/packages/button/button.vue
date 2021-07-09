@@ -13,8 +13,9 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'primary',
+      default: '',
       validator (type) {
+        if (type === '') return true
         if (!['primary', 'warning', 'danger', 'success', 'info'].includes(type)) {
           throw new Error('y-button中type只能传入' + ['primary', 'warning', 'danger', 'success', 'info'].join(','))
         }
@@ -28,12 +29,17 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    size: {
+      type: String,
+      default: ''
     }
   },
   setup (props) {
     const classes = computed(() => [
       'y-button',
-      `y-button-${props.type}`
+      `y-button-${props.type}`,
+      `y-button-${props.size}`
     ])
 
     return {

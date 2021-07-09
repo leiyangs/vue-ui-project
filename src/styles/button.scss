@@ -15,12 +15,18 @@ $disable-color-list: (primary: $primary-disable,
   danger: $danger-disable,
   info: $info-disable,
 );
+$focus-color-list: (primary: $primary-focus,
+  success: $success-focus,
+  warning: $warning-focus,
+  danger: $danger-focus,
+  info: $info-focus,
+);
 
 @include blockquote(button) {
   @include status($color-list);
   font-size: $font-size;
   border-radius: $border-radius;
-  color: $color;
+  color: #000000;
   cursor: pointer;
   outline: none;
   background: #FFFFFF;
@@ -31,10 +37,29 @@ $disable-color-list: (primary: $primary-disable,
   align-items: center;
   display: inline-flex;
   align-items: center;
-  box-shadow: #ccc;
   vertical-align: middle;
+  line-height: 1;
+
+  &.y-button-medium {
+    padding: 10px 20px;
+  }
+
+  &.y-button-small {
+    padding: 9px 15px;
+  }
+
+  &.y-button-mini {
+    padding: 7px 15px;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: #66b1ff;
+    @include status($focus-color-list);
+  }
 
   &:active {
+    background-color: #b3d8ff;
     @include status($active-color-list);
   }
 
