@@ -4,4 +4,44 @@
 @include blockquote(button-group) {
   display: inline-block;
   vertical-align: middle;
+
+  button {
+    border-radius: 0;
+    float: left;
+    position: relative;
+  }
+
+  .y-button+.y-button {
+    margin: 0;
+  }
+
+  &>.y-button:first-child {
+    border-right-color: hsla(0, 0%, 100%, .5);
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &>.y-button:last-child {
+    border-left-color: hsla(0, 0%, 100%, .5);
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+  &>.y-button:not(:first-child):not(:last-child) {
+    margin-right: -1px;
+    border-left-color: hsla(0, 0%, 100%, .5);
+    border-right-color: hsla(0, 0%, 100%, .5);
+  }
+
+  &>.y-button:not(:last-child) {
+    margin-right: -1px;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.y-button-group+.y-button-group {
+  margin-left: 10px;
 }
