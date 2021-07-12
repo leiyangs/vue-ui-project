@@ -38,8 +38,8 @@ export default {
   setup (props) {
     const classes = computed(() => [
       'y-button',
-      `y-button-${props.type}`,
-      `y-button-${props.size}`
+      props.type && `y-button-${props.type}`,
+      props.size && `y-button-${props.size}`
     ])
 
     return {

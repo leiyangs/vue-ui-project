@@ -1,7 +1,13 @@
 <template>
-  <Button></Button>
-  <Icon></Icon>
-  <ButtonGroup></ButtonGroup>
+  <div>
+    <Button></Button>
+  </div>
+  <div>
+    <Icon></Icon>
+  </div>
+  <div>
+    <ButtonGroup></ButtonGroup>
+  </div>
 </template>
 
 <script>
@@ -18,5 +24,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+div{
+  margin-bottom: 20px;
+}
 </style>
