@@ -1,13 +1,19 @@
 import { expect } from 'chai'
-import { shallowMount } from '@vue/test-utils'
-import Button from '../../src/examples/button.vue'
+// import { shallowMount } from '@vue/test-utils'
+import Button from '../../src/packages/button'
+import Icon from '../../src/packages/icon'
+import { createApp } from 'vue'
 
 describe('Button.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(Button, {
-      props: { msg }
+  it('button正常显示？', () => {
+    const container = document.createElement('div')
+    const app = createApp({
+      template: '<y-button>按钮</y-button>',
+      components: {
+        'y-button': Button
+      }
     })
-    expect(wrapper.text()).to.include(msg)
+    app.use(Icon).mount(container)
+    expect(app.$el.innerHtml).to.match(/按钮/)
   })
 })
