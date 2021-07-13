@@ -1,0 +1,7 @@
+@import "./common/_base.scss";
+@import "./mixins/mixins.scss";
+
+@include blockquote(carousel-item) {
+  width: 100%;
+  height: 100%;
+}

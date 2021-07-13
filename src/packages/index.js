@@ -2,11 +2,15 @@
 import Button from './button'
 import ButtonGroup from './button-group'
 import Icon from './icon'
+import Carousel from './carousel'
+import CarouselItem from './carousel-item'
 
 const plugins = [
   Button,
   ButtonGroup,
-  Icon
+  Icon,
+  Carousel,
+  CarouselItem
 ]
 
 // 让所有的插件都执行

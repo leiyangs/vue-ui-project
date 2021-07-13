@@ -1,12 +1,15 @@
 <template>
   <div>
-    <Button></Button>
+    <Button/>
   </div>
   <div>
-    <Icon></Icon>
+    <Icon/>
   </div>
   <div>
-    <ButtonGroup></ButtonGroup>
+    <ButtonGroup/>
+  </div>
+  <div>
+    <Carousel/>
   </div>
 </template>
 
@@ -14,12 +17,14 @@
 import Button from './examples/button.vue'
 import Icon from './examples/icon.vue'
 import ButtonGroup from './examples/button-group.vue'
+import Carousel from './examples/carousel.vue'
 export default {
   name: 'App',
   components: {
     Button,
     Icon,
-    ButtonGroup
+    ButtonGroup,
+    Carousel
   }
 }
 </script>
