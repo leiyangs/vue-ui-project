@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-// import { shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Button from '../../src/packages/button'
 import Icon from '../../src/packages/icon'
 import { createApp } from 'vue'
