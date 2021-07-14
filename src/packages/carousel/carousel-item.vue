@@ -1,7 +1,9 @@
 <template>
-  <div class="y-carousel-item" v-if="isVisible">
-    <slot></slot>
-  </div>
+  <transition name="carousel-item">
+    <div class="y-carousel-item" v-if="isVisible">
+      <slot></slot>
+    </div>
+  </transition>
 </template>
 
 <script>

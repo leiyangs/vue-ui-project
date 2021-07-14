@@ -4,4 +4,31 @@
 @include blockquote(carousel-item) {
   width: 100%;
   height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.carousel-item-enter-active,
+.carousel-item-leave-active {
+  transition: all 0.4s linear;
+}
+
+.carousel-item-enter-active {
+  transform: translateX(100%);
+}
+
+.carousel-item-enter-to {
+  transform: translateX(0);
+}
+
+.carousel-item-leave-active {
+  transform: translateX(0);
+}
+
+.carousel-item-leave-to {
+  transform: translateX(-100%);
 }

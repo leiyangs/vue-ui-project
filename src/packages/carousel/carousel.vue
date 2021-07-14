@@ -1,5 +1,5 @@
 <template>
-  <div class="y-carousel" :style="styles">
+  <div class="y-carousel clearfix" :style="styles">
     <div class="view-port">
       <slot></slot>
     </div>
@@ -21,7 +21,7 @@ export default {
     },
     interval: {
       type: Number,
-      default: 3000
+      default: 1000
     },
     initialIndex: {
       type: Number,
@@ -44,14 +44,32 @@ export default {
     }
     provide('current', { state, changeIndex })
 
-    onMounted(() => {
-      state.len = state.currentIndex
-    })
-
     const styles = computed(() => {
       return {
         height: props.height
       }
+    })
+
+    const methods = {
+      go (index) {
+        if (index === state.len) index = 0
+        if (index === -1)state.currentSelected = index - 1
+        state.currentSelected = index
+      },
+      run () {
+        if (props.autoplay) {
+          setInterval(() => {
+            let index = state.currentSelected
+            const currnetIndex = ++index
+            methods.go(currnetIndex)
+          }, props.interval)
+        }
+      }
+    }
+
+    onMounted(() => {
+      state.len = state.currentIndex
+      methods.run()
     })
 
     return {
