@@ -34,8 +34,9 @@ export default {
   },
   setup (props) {
     const state = reactive({
-      currentIndex: 0,
-      len: 0 // 子组件个数
+      currentIndex: 0, // 对应自组件索引
+      len: 0, // 子组件个数
+      currentSelected: props.initialIndex // 当前显示第几个
     })
 
     const changeIndex = () => {
@@ -45,7 +46,6 @@ export default {
 
     onMounted(() => {
       state.len = state.currentIndex
-      console.log(state.len)
     })
 
     const styles = computed(() => {
