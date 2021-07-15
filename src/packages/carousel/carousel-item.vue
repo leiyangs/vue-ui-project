@@ -1,6 +1,6 @@
 <template>
   <transition name="carousel-item">
-    <div class="y-carousel-item" v-if="isVisible">
+    <div :class="classes" v-if="isVisible">
       <slot></slot>
     </div>
   </transition>
@@ -15,10 +15,12 @@ export default {
     const currentIndex = state.currentIndex
 
     const isVisible = computed(() => state.currentSelected === currentIndex)
+    const classes = computed(() => ([state.reserve ? 'reserve' : '', 'y-carousel-item']))
     changeIndex()
 
     return {
-      isVisible
+      isVisible,
+      classes
     }
   }
 }

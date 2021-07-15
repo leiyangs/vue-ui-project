@@ -12,4 +12,35 @@
     text-align: center;
     line-height: 1;
   }
+
+  .dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    li {
+      display: inline-block;
+      padding: 12px 4px;
+      cursor: pointer;
+      background-color: transparent;
+
+      .dot-button {
+        display: block;
+        opacity: .48;
+        width: 30px;
+        height: 2px;
+        background-color: #c0c4cc;
+        cursor: pointer;
+        transition: .3s linear;
+      }
+
+      &.is-active {
+        .dot-button {
+          background-color: #fff;
+          opacity: 1;
+        }
+      }
+    }
+  }
 }

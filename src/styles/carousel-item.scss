@@ -17,6 +17,7 @@
   transition: all 0.4s linear;
 }
 
+// 正向轮播
 .carousel-item-enter-active {
   transform: translateX(100%);
 }
@@ -31,4 +32,21 @@
 
 .carousel-item-leave-to {
   transform: translateX(-100%);
+}
+
+// 反向轮播
+.carousel-item-enter-active.reserve {
+  transform: translateX(-100%);
+}
+
+.carousel-item-enter-to.reserve {
+  transform: translateX(0);
+}
+
+.carousel-item-leave-active.reserve {
+  transform: translateX(0);
+}
+
+.carousel-item-leave-to.reserve {
+  transform: translateX(100%);
 }

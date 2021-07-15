@@ -3,11 +3,16 @@
     <div class="view-port">
       <slot></slot>
     </div>
+    <ul class="dots">
+      <li v-for="(dot,index) in len" :key="dot" :class="[currentSelected===index?'is-active':'']" @mouseenter="onHover(index)">
+        <span class="dot-button"></span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { computed, onMounted, provide, reactive, toRefs } from 'vue'
+import { computed, nextTick, onMounted, provide, reactive, toRefs } from 'vue'
 export default {
   name: 'YCarousel',
   props: {
@@ -36,7 +41,8 @@ export default {
     const state = reactive({
       currentIndex: 0, // 对应自组件索引
       len: 0, // 子组件个数
-      currentSelected: props.initialIndex // 当前显示第几个
+      currentSelected: props.initialIndex, // 当前显示第几个
+      reserve: false // 反向轮播
     })
 
     const changeIndex = () => {
@@ -51,17 +57,32 @@ export default {
     })
 
     const methods = {
-      go (index) {
-        if (index === state.len) index = 0
-        if (index === -1)state.currentSelected = index - 1
-        state.currentSelected = index
+      async go (newIndex) {
+        if (newIndex === state.len) newIndex = 0
+        if (newIndex === -1)newIndex = state.len - 1
+
+        const index = state.currentSelected
+        // 正向轮播还是反向轮播
+        state.reserve = index > newIndex
+        if (props.loop) {
+          // 0=>3
+          if (index === 0 && newIndex === state.len - 1) {
+            state.reserve = true
+          }
+          // 3=>0
+          if (index === state.len - 1 && newIndex === 0) {
+            state.reserve = false
+          }
+        }
+        await nextTick()
+        state.currentSelected = newIndex
       },
       run () {
         if (props.autoplay) {
           setInterval(() => {
             let index = state.currentSelected
-            const currnetIndex = ++index
-            methods.go(currnetIndex)
+            const newIndex = ++index
+            methods.go(newIndex)
           }, props.interval)
         }
       }
@@ -72,9 +93,28 @@ export default {
       methods.run()
     })
 
+    const onHover = async (newIndex) => {
+      const index = state.currentSelected
+      // 正向轮播还是反向轮播
+      state.reserve = index > newIndex
+      if (props.loop) {
+        // 0=>3
+        if (index === 0 && newIndex === state.len - 1) {
+          state.reserve = true
+        }
+        // 3=>0
+        if (index === state.len - 1 && newIndex === 0) {
+          state.reserve = false
+        }
+      }
+      await nextTick()
+      state.currentSelected = newIndex
+    }
+
     return {
       styles,
-      ...toRefs(state)
+      ...toRefs(state),
+      onHover
     }
   }
 }
