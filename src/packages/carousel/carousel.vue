@@ -1,10 +1,10 @@
 <template>
-  <div class="y-carousel clearfix" :style="styles">
+  <div class="y-carousel clearfix" :style="styles" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
     <div class="view-port">
       <slot></slot>
     </div>
     <ul class="dots">
-      <li v-for="(dot,index) in len" :key="dot" :class="[currentSelected===index?'is-active':'']" @mouseenter="onHover(index)">
+      <li v-for="(dot,index) in len" :key="dot" :class="[currentSelected===index?'is-active':'']" @mouseenter="go(index)">
         <span class="dot-button"></span>
       </li>
     </ul>
@@ -56,6 +56,7 @@ export default {
       }
     })
 
+    let timer = null
     const methods = {
       async go (newIndex) {
         if (newIndex === state.len) newIndex = 0
@@ -64,7 +65,7 @@ export default {
         const index = state.currentSelected
         // 正向轮播还是反向轮播
         state.reserve = index > newIndex
-        if (props.loop) {
+        if (timer && props.loop) {
           // 0=>3
           if (index === 0 && newIndex === state.len - 1) {
             state.reserve = true
@@ -79,12 +80,19 @@ export default {
       },
       run () {
         if (props.autoplay) {
-          setInterval(() => {
+          timer = setInterval(() => {
             let index = state.currentSelected
             const newIndex = ++index
             methods.go(newIndex)
           }, props.interval)
         }
+      },
+      onMouseEnter () {
+        clearInterval(timer)
+        timer = null
+      },
+      onMouseLeave () {
+        methods.run()
       }
     }
 
@@ -93,28 +101,10 @@ export default {
       methods.run()
     })
 
-    const onHover = async (newIndex) => {
-      const index = state.currentSelected
-      // 正向轮播还是反向轮播
-      state.reserve = index > newIndex
-      if (props.loop) {
-        // 0=>3
-        if (index === 0 && newIndex === state.len - 1) {
-          state.reserve = true
-        }
-        // 3=>0
-        if (index === state.len - 1 && newIndex === 0) {
-          state.reserve = false
-        }
-      }
-      await nextTick()
-      state.currentSelected = newIndex
-    }
-
     return {
       styles,
       ...toRefs(state),
-      onHover
+      ...methods
     }
   }
 }
