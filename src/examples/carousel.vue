@@ -1,6 +1,6 @@
 <template>
   <div>
-    <y-carousel height="150px" :autoplay="true" :interval="4000" :initial-index="0" :loop="true" style="width:500px">
+    <y-carousel height="150px" :autoplay="true" :interval="4000" :initial-index="0" :loop="true" arrow="hover" style="width:500px">
       <y-carousel-item v-for="item in list" :key="item.key" :style="{backgroundColor: item.bg}">
         <h1>{{item.key}}</h1>
       </y-carousel-item>

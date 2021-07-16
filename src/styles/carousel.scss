@@ -11,6 +11,38 @@
     overflow: hidden;
     text-align: center;
     line-height: 1;
+
+    .y-carousel-arrow {
+      position: absolute;
+
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      background-color: rgba(31, 45, 61, .11);
+      transition: 0.3s;
+      color: #fff;
+      z-index: 10;
+      text-align: center;
+      font-size: 12px;
+
+      &:hover {
+        background-color: rgba(31, 45, 61, .23);
+      }
+
+      &.y-carousel-arrow-left {
+        left: 16px;
+      }
+
+      &.y-carousel-arrow-right {
+        right: 16px;
+      }
+    }
   }
 
   .dots {
@@ -43,4 +75,20 @@
       }
     }
   }
+}
+
+.carousel-arrow-enter-active {
+  transform: translateX(-10px);
+}
+
+.carousel-arrow-enter-to {
+  transform: translateX(0);
+}
+
+.carousel-arrow-leave-active {
+  transform: translateX(0);
+}
+
+.carousel-arrow-leave-to {
+  transform: translateX(-10px);
 }

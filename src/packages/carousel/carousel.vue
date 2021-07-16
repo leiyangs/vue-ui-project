@@ -1,6 +1,12 @@
 <template>
   <div class="y-carousel clearfix" :style="styles" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
     <div class="view-port">
+      <button v-if="arrow" type="button" class="y-carousel-arrow y-carousel-arrow-left" @click="go(currentSelected-1, true)">
+        <y-icon icon="arrow-double-left"/>
+      </button>
+      <button v-if="arrow" type="button" class="y-carousel-arrow y-carousel-arrow-right" @click="go(currentSelected+1,true)">
+        <y-icon icon="arrow-double-right"/>
+      </button>
       <slot></slot>
     </div>
     <ul class="dots">
@@ -35,6 +41,10 @@ export default {
     loop: {
       type: Boolean,
       default: true
+    },
+    arrow: {
+      type: String,
+      default: 'always'
     }
   },
   setup (props) {
@@ -42,7 +52,8 @@ export default {
       currentIndex: 0, // 对应自组件索引
       len: 0, // 子组件个数
       currentSelected: props.initialIndex, // 当前显示第几个
-      reserve: false // 反向轮播
+      reserve: false, // 反向轮播
+      arrow: props.arrow === 'always'
     })
 
     const changeIndex = () => {
@@ -56,16 +67,16 @@ export default {
       }
     })
 
-    let timer = null
+    var timer = null
     const methods = {
-      async go (newIndex) {
+      async go (newIndex, flag) {
         if (newIndex === state.len) newIndex = 0
         if (newIndex === -1)newIndex = state.len - 1
 
         const index = state.currentSelected
         // 正向轮播还是反向轮播
         state.reserve = index > newIndex
-        if (timer && props.loop) {
+        if ((timer || flag) && props.loop) {
           // 0=>3
           if (index === 0 && newIndex === state.len - 1) {
             state.reserve = true
@@ -90,9 +101,15 @@ export default {
       onMouseEnter () {
         clearInterval(timer)
         timer = null
+        if (props.arrow === 'hover') {
+          state.arrow = true
+        }
       },
       onMouseLeave () {
         methods.run()
+        if (props.arrow === 'hover') {
+          state.arrow = false
+        }
       }
     }
 
