@@ -11,6 +11,9 @@
   <div>
     <Carousel/>
   </div>
+  <div>
+    <Message/>
+  </div>
 </template>
 
 <script>
@@ -18,13 +21,15 @@ import Button from './examples/button.vue'
 import Icon from './examples/icon.vue'
 import ButtonGroup from './examples/button-group.vue'
 import Carousel from './examples/carousel.vue'
+import Message from './examples/message.vue'
 export default {
   name: 'App',
   components: {
     Button,
     Icon,
     ButtonGroup,
-    Carousel
+    Carousel,
+    Message
   }
 }
 </script>
