@@ -7,6 +7,8 @@ const getEntries = (path) => {
   const entries = {}
   const absPath = resolve(path)
   const dirs = fs.readdirSync(absPath)
+  console.log(absPath)
+  console.log(dirs)
 
   dirs.forEach(dir => {
     let p = join(absPath, dir)

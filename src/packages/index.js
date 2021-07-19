@@ -4,13 +4,15 @@ import ButtonGroup from './button-group'
 import Icon from './icon'
 import Carousel from './carousel'
 import CarouselItem from './carousel-item'
+import Tree from './tree'
 
 const plugins = [
   Button,
   ButtonGroup,
   Icon,
   Carousel,
-  CarouselItem
+  CarouselItem,
+  Tree
 ]
 
 // 让所有的插件都执行

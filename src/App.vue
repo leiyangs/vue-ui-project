@@ -14,6 +14,9 @@
   <div>
     <Message/>
   </div>
+  <div>
+    <Tree/>
+  </div>
 </template>
 
 <script>
@@ -22,6 +25,7 @@ import Icon from './examples/icon.vue'
 import ButtonGroup from './examples/button-group.vue'
 import Carousel from './examples/carousel.vue'
 import Message from './examples/message.vue'
+import Tree from './examples/tree.vue'
 export default {
   name: 'App',
   components: {
@@ -29,7 +33,8 @@ export default {
     Icon,
     ButtonGroup,
     Carousel,
-    Message
+    Message,
+    Tree
   }
 }
 </script>
