@@ -1,0 +1,17 @@
+@import './common/base';
+@import './mixins/mixins.scss';
+
+@include blockquote(tree) {
+  position: relative;
+  background-color: #fff;
+  color: #606266;
+
+  .y-tree-node {
+    white-space: nowrap;
+    outline: none;
+
+    .y-tree-label {
+      font-size: 14px;
+    }
+  }
+}

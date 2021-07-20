@@ -32,11 +32,15 @@ $color: #ffffff;
 
 body,
 html {
-  line-height: 1px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 ul,
