@@ -2,8 +2,8 @@
   <div>
     按钮组：
     <y-button-group>
-      <y-button type="primary" icon="arrow-double-left" @click="handlePrev">上一页</y-button>
-      <y-button type="primary">上一页<y-icon icon="arrow-double-right"/></y-button>
+      <y-button type="primary" icon="arrow-left-bold" @click="handlePrev">上一页</y-button>
+      <y-button type="primary">上一页<y-icon icon="arrow-right-bold"/></y-button>
     </y-button-group>
     <y-button-group>
       <y-button type="primary" icon="share"></y-button>

@@ -27,7 +27,6 @@ const createMessageWrapper = () => {
 
 // Message({message: '我是消息', type: 'success'})
 const Message = (options) => {
-  console.log(document.body.contains(wrapper))
   if (!document.body.contains(wrapper)) {
     createMessageWrapper()
   }

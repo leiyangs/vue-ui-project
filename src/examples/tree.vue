@@ -1,11 +1,13 @@
 <template>
-  <y-tree :data="data"/>
+  <y-tree :data="data" ref="tree"/>
+  <y-button type="primary" size="mini" @click="getChecked">点击获取选中</y-button>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
 export default {
   setup () {
+    const tree = ref(null)
     const state = reactive({
       data: [{
         id: 1,
@@ -44,8 +46,15 @@ export default {
       }]
     })
 
+    const getChecked = () => {
+      console.log(tree.value)
+      tree.value.getCheckedNodes()
+    }
+
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      getChecked,
+      tree
     }
   }
 }

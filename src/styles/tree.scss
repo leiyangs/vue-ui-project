@@ -5,13 +5,29 @@
   position: relative;
   background-color: #fff;
   color: #606266;
+  transition: .1s linear;
 
   .y-tree-node {
-    white-space: nowrap;
-    outline: none;
+    padding-left: 36px;
 
-    .y-tree-label {
-      font-size: 14px;
+    .y-tree-node-content {
+      white-space: nowrap;
+      outline: none;
+      cursor: pointer;
+
+      .y-tree-node__expand-icon {
+        visibility: hidden;
+        color: transparent;
+      }
+
+      .y-tree-label {
+        font-size: 14px;
+      }
     }
+  }
+
+  .y-tree-node-show-icon>.y-tree-node-content>.y-tree-node__expand-icon {
+    visibility: visible;
+    color: #c0c4cc;
   }
 }
