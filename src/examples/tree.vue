@@ -1,5 +1,9 @@
 <template>
-  <y-tree :data="data" ref="tree"/>
+  <y-tree :data="data" ref="tree" :load="loadNode">
+    <template v-slot="{label}">
+      <span>自定义显示({{label}})</span>
+    </template>
+  </y-tree>
   <y-button type="primary" size="mini" @click="getChecked">点击获取选中</y-button>
 </template>
 
@@ -47,14 +51,23 @@ export default {
     })
 
     const getChecked = () => {
-      console.log(tree.value)
-      tree.value.getCheckedNodes()
+      const checkedNodes = tree.value.getCheckedNodes()
+      console.log(checkedNodes)
+    }
+
+    const loadNode = (node, resolve) => {
+      if (node.id === 1) {
+        setTimeout(() => {
+          resolve([{ label: 'name' }])
+        }, 500)
+      }
     }
 
     return {
       ...toRefs(state),
       getChecked,
-      tree
+      tree,
+      loadNode
     }
   }
 }
