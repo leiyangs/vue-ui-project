@@ -11,6 +11,13 @@ export default {
     data: {
       type: Array,
       default: () => []
+    },
+    load: {
+      type: Function
+    },
+    showCheckbox: {
+      type: Boolean,
+      default: false
     }
   },
   setup (props, ctx) {
@@ -50,8 +57,8 @@ export default {
         methods.updateTreeUp(parentNode, checked)
       }
     }
-    console.log(ctx.slots)
-    provide('treeMethods', { treeMethods: methods, slot: ctx.slots.default })
+
+    provide('treeMethods', { treeMethods: methods, slot: ctx.slots.default, load: props.load, showCheckbox: props.showCheckbox })
 
     // 获取当前实例，并在上下文挂载方法
     const instance = getCurrentInstance()

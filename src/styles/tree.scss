@@ -15,6 +15,21 @@
       outline: none;
       cursor: pointer;
 
+      @keyframes loadingRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading {
+        color: #c0c4cc;
+        animation: loadingRotate 1s linear infinite;
+      }
+
       .y-tree-node__expand-icon {
         visibility: hidden;
         color: transparent;

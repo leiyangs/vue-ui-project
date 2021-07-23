@@ -1,5 +1,5 @@
 <template>
-  <y-tree :data="data" ref="tree" :load="loadNode">
+  <y-tree :data="data" ref="tree" show-checkbox :load="loadNode">
     <template v-slot="{label}">
       <span>自定义显示({{label}})</span>
     </template>
@@ -16,17 +16,7 @@ export default {
       data: [{
         id: 1,
         label: '一级 1',
-        children: [{
-          id: 4,
-          label: '二级 1-1',
-          children: [{
-            id: 9,
-            label: '三级 1-1-1'
-          }, {
-            id: 10,
-            label: '三级 1-1-2'
-          }]
-        }]
+        children: []
       }, {
         id: 2,
         label: '一级 2',
@@ -58,7 +48,22 @@ export default {
     const loadNode = (node, resolve) => {
       if (node.id === 1) {
         setTimeout(() => {
-          resolve([{ label: 'name' }])
+          resolve([{
+            id: 4,
+            label: '二级 1-1',
+            children: []
+          }])
+        }, 500)
+      }
+      if (node.id === 4) {
+        setTimeout(() => {
+          resolve([{
+            id: 9,
+            label: '三级 1-1-1'
+          }, {
+            id: 10,
+            label: '三级 1-1-2'
+          }])
         }, 500)
       }
     }
