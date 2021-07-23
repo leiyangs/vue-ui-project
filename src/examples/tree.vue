@@ -1,5 +1,5 @@
 <template>
-  <y-tree :data="data" ref="tree" show-checkbox :load="loadNode">
+  <y-tree :data="data" ref="tree" show-checkbox draggable :load="loadNode">
     <template v-slot="{label}">
       <span>自定义显示({{label}})</span>
     </template>

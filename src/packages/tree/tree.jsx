@@ -18,6 +18,10 @@ export default {
     showCheckbox: {
       type: Boolean,
       default: false
+    },
+    draggable: {
+      type: Boolean,
+      default: false
     }
   },
   setup (props, ctx) {
@@ -55,10 +59,25 @@ export default {
           parentNode.checked = false
         }
         methods.updateTreeUp(parentNode, checked)
+      },
+      dragStart (e, nodeInstance, data) {
+
+      },
+      dragOver (e, nodeInstance, data) {
+
+      },
+      dragEnd (e, nodeInstance, data) {
+
       }
     }
 
-    provide('treeMethods', { treeMethods: methods, slot: ctx.slots.default, load: props.load, showCheckbox: props.showCheckbox })
+    provide('treeMethods', {
+      treeMethods: methods,
+      slot: ctx.slots.default,
+      load: props.load,
+      showCheckbox: props.showCheckbox,
+      draggable: props.draggable
+    })
 
     // 获取当前实例，并在上下文挂载方法
     const instance = getCurrentInstance()

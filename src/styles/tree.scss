@@ -35,14 +35,32 @@
         color: transparent;
       }
 
+      .is_expand {
+        transform: rotate(90deg);
+      }
+
       .y-tree-label {
         font-size: 14px;
       }
     }
   }
 
+  .is-draggable {
+    user-select: none;
+    -webkit-user-drag: element;
+  }
+
   .y-tree-node-show-icon>.y-tree-node-content>.y-tree-node__expand-icon {
     visibility: visible;
     color: #c0c4cc;
+    transform: rotate(0deg);
+    transition: 0.1s linear;
+
+  }
+
+  .y-tree-node-show-icon>.y-tree-node-content>.is_expand {
+    visibility: visible;
+    color: #c0c4cc;
+    transform: rotate(90deg);
   }
 }
