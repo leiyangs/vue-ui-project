@@ -24,12 +24,14 @@ export default {
         // 如果是收起
         if (!data.value.isExpand) {
           if (data.value.children && data.value.children.length === 0) {
-            data.value.loading = true
-            isLoaded.value = false
-            load(data.value, (children) => {
-              data.value.children = children
-              data.value.loading = false
-            })
+            if (load) {
+              data.value.loading = true
+              isLoaded.value = false
+              load(data.value, (children) => {
+                data.value.children = children
+                data.value.loading = false
+              })
+            }
           } else {
             isLoaded.value = true
           }
@@ -50,17 +52,14 @@ export default {
         onDragstart (e) {
           e.stopPropagation()
           treeMethods.dragStart(e, instance, data)
-          console.log('onDragstart')
         },
         onDragover (e) {
           e.stopPropagation()
           treeMethods.dragOver(e, instance, data)
-          console.log('onDragover')
         },
         onDragend (e) {
           e.stopPropagation()
           treeMethods.dragEnd(e, instance, data)
-          console.log('onDragend')
         }
       } : {})
     }

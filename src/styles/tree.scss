@@ -63,4 +63,12 @@
     color: #c0c4cc;
     transform: rotate(90deg);
   }
+
+  .y-tree-indicator {
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: #409EFF;
+    height: 1px;
+  }
 }
